@@ -1,12 +1,17 @@
 import { useState } from 'react';
-import { Droplets, Wind, Sun, CloudRain, Sprout, LineChart, Tractor, TestTube } from 'lucide-react';
+import { Droplets, Wind, Sun, LineChart, TestTube, Sprout } from 'lucide-react';
+
+interface Tab {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+}
 
 const SmartFarming = () => {
   const [activeTab, setActiveTab] = useState<string>('irrigation');
   
-  const tabs = [
+  const tabs: Tab[] = [
     { id: 'irrigation', name: 'Irrigation', icon: <Droplets className="h-5 w-5" /> },
-    { id: 'fertilizers', name: 'Engrais', icon: <Sprout className="h-5 w-5" /> },
     { id: 'prediction', name: 'IA & Prédiction', icon: <LineChart className="h-5 w-5" /> },
     { id: 'pests', name: 'Ravageurs', icon: <TestTube className="h-5 w-5" /> },
   ];
@@ -85,7 +90,7 @@ const SmartFarming = () => {
                   
                   <div className="bg-purple-50 rounded-lg p-5">
                     <h3 className="flex items-center text-lg font-semibold mb-3">
-                      <Tractor className="h-5 w-5 text-purple-600 mr-2" />
+                      <Wind className="h-5 w-5 text-purple-600 mr-2" />
                       Installation simple
                     </h3>
                     <p>
@@ -137,113 +142,6 @@ const SmartFarming = () => {
               </div>
             </div>
           )}
-          
-          {activeTab === 'fertilizers' && (
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Gestion intelligente des engrais</h2>
-              
-              <div className="mb-8">
-                <p className="text-lg mb-4">
-                  Optimisez l'utilisation des engrais grâce à notre système de gestion qui analyse 
-                  la composition du sol et recommande la quantité exacte d'engrais nécessaire.
-                </p>
-                
-                <div className="grid gap-6 md:grid-cols-2 my-8">
-                  <div className="bg-green-50 rounded-lg p-5">
-                    <h3 className="flex items-center text-lg font-semibold mb-3">
-                      <Sprout className="h-5 w-5 text-green-600 mr-2" />
-                      Économie d'intrants
-                    </h3>
-                    <p>
-                      Réduisez jusqu'à 40% votre consommation d'engrais en appliquant uniquement 
-                      ce dont vos cultures ont besoin.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-blue-50 rounded-lg p-5">
-                    <h3 className="flex items-center text-lg font-semibold mb-3">
-                      <TestTube className="h-5 w-5 text-blue-600 mr-2" />
-                      Analyse du sol personnalisée
-                    </h3>
-                    <p>
-                      Obtenez une analyse détaillée de votre sol pour comprendre ses carences 
-                      et adapter précisément vos apports.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-amber-50 rounded-lg p-5">
-                    <h3 className="flex items-center text-lg font-semibold mb-3">
-                      <CloudRain className="h-5 w-5 text-amber-600 mr-2" />
-                      Réduction de la pollution
-                    </h3>
-                    <p>
-                      Limitez le lessivage des nutriments et la pollution des nappes phréatiques 
-                      grâce à des apports optimisés.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-purple-50 rounded-lg p-5">
-                    <h3 className="flex items-center text-lg font-semibold mb-3">
-                      <LineChart className="h-5 w-5 text-purple-600 mr-2" />
-                      Suivi de la fertilité
-                    </h3>
-                    <p>
-                      Surveillez l'évolution de la fertilité de votre sol au fil du temps et 
-                      ajustez votre stratégie en conséquence.
-                    </p>
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-semibold mb-3">Notre approche</h3>
-                <ol className="list-decimal ml-6 space-y-2 mb-6">
-                  <li>
-                    <strong>Analyse de sol</strong> : Nous prélevons des échantillons de sol pour analyse en laboratoire.
-                  </li>
-                  <li>
-                    <strong>Cartographie de la fertilité</strong> : Création d'une carte détaillée de la fertilité de votre terrain.
-                  </li>
-                  <li>
-                    <strong>Plan de fertilisation</strong> : Élaboration d'un plan personnalisé selon vos cultures et objectifs.
-                  </li>
-                  <li>
-                    <strong>Application précise</strong> : Recommandations pour une application ciblée des engrais.
-                  </li>
-                  <li>
-                    <strong>Suivi et ajustement</strong> : Analyses régulières pour suivre l'évolution et ajuster le plan.
-                  </li>
-                </ol>
-                
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5 mb-6">
-                  <h4 className="font-semibold mb-2">Résultats typiques</h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-start space-x-2">
-                      <span className="text-green-600 font-bold">✓</span>
-                      <span>Réduction de 30-40% des coûts d'engrais</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-green-600 font-bold">✓</span>
-                      <span>Amélioration de la qualité nutritionnelle des produits</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-green-600 font-bold">✓</span>
-                      <span>Augmentation de la résistance des plantes aux maladies</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-green-600 font-bold">✓</span>
-                      <span>Diminution des impacts environnementaux négatifs</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="text-center">
-                  <button className="btn btn-primary px-8">
-                    Demander une analyse de sol
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-          
           {activeTab === 'prediction' && (
             <div>
               <h2 className="text-2xl font-bold mb-4">Prédiction des rendements par IA</h2>
@@ -300,9 +198,9 @@ const SmartFarming = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-3">Comment fonctionne notre IA</h3>
+                <h3 className="text-xl font-semibold mb-3">Notre approche</h3>
                 <p className="mb-4">
-                  Notre système utilise des algorithmes d'apprentissage profond qui analysent:
+                  Nous utilisons des algorithmes d'apprentissage profond qui analysent:
                 </p>
                 <ul className="list-disc ml-6 space-y-2 mb-6">
                   <li>

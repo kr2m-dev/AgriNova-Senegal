@@ -1,4 +1,4 @@
-import { Plane as Plant, HeartPulse, AlertTriangle, Droplets, LineChart, ShoppingBag, BookOpen, Sprout } from 'lucide-react';
+import { Plane as Plant, AlertTriangle, Droplets, LineChart, BookOpen, Sprout } from 'lucide-react';
 import FeatureCard from './FeatureCard';
 
 const FeaturesGrid = () => {
@@ -11,13 +11,6 @@ const FeaturesGrid = () => {
       color: 'bg-primary/10'
     },
     {
-      title: 'Santé animale',
-      description: 'Diagnostiquez les symptômes et recevez des conseils pour la santé de votre bétail.',
-      icon: <HeartPulse className="h-7 w-7 text-red-600" />,
-      to: '/diagnostic-animaux',
-      color: 'bg-red-100'
-    },
-    {
       title: 'Alertes météo',
       description: 'Restez informé des conditions météorologiques et recevez des alertes en cas de dangers.',
       icon: <AlertTriangle className="h-7 w-7 text-amber-500" />,
@@ -26,24 +19,17 @@ const FeaturesGrid = () => {
     },
     {
       title: 'Irrigation optimisée',
-      description: 'Économisez l&apos;eau grâce à un système d&apos;irrigation intelligent basé sur les besoins réels.',
+      description: 'Économisez l\'eau grâce à un système d\'irrigation intelligent basé sur les besoins réels.',
       icon: <Droplets className="h-7 w-7 text-blue-600" />,
       to: '/agriculture-intelligente',
       color: 'bg-blue-100'
     },
     {
       title: 'Prévision des rendements',
-      description: 'Utilisez l&apos;IA pour prédire et optimiser vos rendements agricoles.',
+      description: 'Utilisez l\'IA pour prédire et optimiser vos rendements agricoles.',
       icon: <LineChart className="h-7 w-7 text-indigo-600" />,
       to: '/agriculture-intelligente',
       color: 'bg-indigo-100'
-    },
-    {
-      title: 'Marché agricole',
-      description: 'Vendez vos produits directement aux consommateurs et aux distributeurs locaux.',
-      icon: <ShoppingBag className="h-7 w-7 text-green-700" />,
-      to: '/marche',
-      color: 'bg-green-100'
     },
     {
       title: 'Formation agricole',

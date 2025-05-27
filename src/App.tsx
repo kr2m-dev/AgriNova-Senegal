@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import PlantDiagnostic from './pages/PlantDiagnostic';
-import AnimalDiagnostic from './pages/AnimalDiagnostic';
+
 import WeatherAlerts from './pages/WeatherAlerts';
 import Marketplace from './pages/Marketplace';
 import Training from './pages/Training';
@@ -15,7 +15,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="diagnostic-plantes" element={<PlantDiagnostic />} />
-        <Route path="diagnostic-animaux" element={<AnimalDiagnostic />} />
+        
         <Route path="alertes-meteo" element={<WeatherAlerts />} />
         <Route path="marche" element={<Marketplace />} />
         <Route path="formation" element={<Training />} />

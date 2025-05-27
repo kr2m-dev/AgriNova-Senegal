@@ -27,8 +27,6 @@ const Marketplace = () => {
     { id: 'fruits', name: 'Fruits' },
     { id: 'vegetables', name: 'Légumes' },
     { id: 'grains', name: 'Céréales' },
-    { id: 'livestock', name: 'Bétail' },
-    { id: 'dairy', name: 'Produits laitiers' },
     { id: 'seeds', name: 'Semences' },
   ];
   
@@ -75,34 +73,7 @@ const Marketplace = () => {
       quantity: 1000,
       available: true
     },
-    {
-      id: 4,
-      name: 'Moutons Ladoum',
-      category: 'livestock',
-      price: 250000,
-      unit: 'unité',
-      location: 'Dakar',
-      seller: 'Élevage Moderne',
-      contact: '+221 XX XXX XX XX',
-      image: 'https://images.pexels.com/photos/288621/pexels-photo-288621.jpeg',
-      description: 'Moutons Ladoum de race pure. Bien nourris et en bonne santé.',
-      quantity: 5,
-      available: true
-    },
-    {
-      id: 5,
-      name: 'Lait frais',
-      category: 'dairy',
-      price: 900,
-      unit: 'litre',
-      location: 'Saint-Louis',
-      seller: 'Ferme Laitière du Nord',
-      contact: '+221 XX XXX XX XX',
-      image: 'https://images.pexels.com/photos/5946976/pexels-photo-5946976.jpeg',
-      description: 'Lait frais de vache, non pasteurisé. Livraison possible à Dakar.',
-      quantity: 100,
-      available: true
-    },
+
     {
       id: 6,
       name: 'Semences de tomates résistantes',

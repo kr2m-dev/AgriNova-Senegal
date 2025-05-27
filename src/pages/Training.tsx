@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Book, Video, CheckCircle, ChevronRight, FileText, Clock, PlayCircle, Medal, Search } from 'lucide-react';
+import { Book, Video, CheckCircle, ChevronRight, Search, Medal, PlayCircle, FileText } from 'lucide-react';
 
 interface Course {
   id: number;
@@ -11,6 +11,14 @@ interface Course {
   lessons: number;
   category: string;
   popular: boolean;
+  price: number;
+  certification: {
+    name: string;
+    phases: string[];
+    duration: string;
+    cost: number;
+  } | null;
+  requirements?: string[];
 }
 
 const Training = () => {
@@ -21,7 +29,6 @@ const Training = () => {
   const categories = [
     { id: 'all', name: 'Toutes les catégories' },
     { id: 'crops', name: 'Cultures' },
-    { id: 'livestock', name: 'Élevage' },
     { id: 'irrigation', name: 'Irrigation' },
     { id: 'business', name: 'Gestion d\'entreprise' },
     { id: 'organic', name: 'Agriculture biologique' },
@@ -37,7 +44,15 @@ const Training = () => {
       level: 'beginner',
       lessons: 12,
       category: 'crops',
-      popular: true
+      popular: true,
+      price: 25000,
+      certification: {
+        name: 'Certification Maraîchage Durable',
+        phases: ['Formation', 'Pratique', 'Examen', 'Certification'],
+        duration: '3 mois',
+        cost: 10000
+      },
+      requirements: ['Avoir une expérience de base en agriculture', 'Être âgé de plus de 21 ans']
     },
     {
       id: 2,
@@ -48,8 +63,27 @@ const Training = () => {
       level: 'intermediate',
       lessons: 8,
       category: 'livestock',
-      popular: true
+      popular: true,
+      price: 30000,
+      certification: {
+        name: 'Certification Élevage Durable',
+        phases: ['Formation', 'Stage', 'Examen', 'Certification'],
+        duration: '4 mois',
+        cost: 15000
+      },
+      requirements: ['Avoir une expérience en élevage', 'Être âgé de plus de 25 ans']
     },
+    // {
+    //   id: 2,
+    //   title: 'Gestion du bétail en saison sèche',
+    //   description: 'Découvrez comment maintenir la santé et la productivité de votre bétail pendant la saison sèche. Stratégies d\'alimentation, conservation de l\'eau et prévention des maladies.',
+    //   image: 'https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg',
+    //   duration: '4 heures',
+    //   level: 'intermediate',
+    //   lessons: 8,
+    //   category: 'livestock',
+    //   popular: true
+    // },
     {
       id: 3,
       title: 'Systèmes d\'irrigation goutte-à-goutte',
@@ -59,7 +93,15 @@ const Training = () => {
       level: 'intermediate',
       lessons: 6,
       category: 'irrigation',
-      popular: false
+      popular: false,
+      price: 20000,
+      certification: {
+        name: 'Certification Irrigation Durable',
+        phases: ['Formation', 'Pratique sur site', 'Examen', 'Certification'],
+        duration: '2 mois',
+        cost: 8000
+      },
+      requirements: ['Avoir une expérience en agriculture', 'Être âgé de plus de 21 ans']
     },
     {
       id: 4,
@@ -70,7 +112,15 @@ const Training = () => {
       level: 'beginner',
       lessons: 10,
       category: 'business',
-      popular: true
+      popular: true,
+      price: 15000,
+      certification: {
+        name: 'Certification Marketing Agricole',
+        phases: ['Formation', 'Stage', 'Examen', 'Certification'],
+        duration: '3 mois',
+        cost: 12000
+      },
+      requirements: ['Avoir une expérience en agriculture', 'Être âgé de plus de 21 ans']
     },
     {
       id: 5,
@@ -81,19 +131,49 @@ const Training = () => {
       level: 'advanced',
       lessons: 16,
       category: 'organic',
-      popular: false
+      popular: false,
+      price: 40000,
+      certification: {
+        name: 'Certification Agriculture Biologique',
+        phases: ['Formation', 'Stage', 'Audit', 'Certification'],
+        duration: '6 mois',
+        cost: 25000
+      },
+      requirements: ['Avoir une expérience en agriculture', 'Être âgé de plus de 25 ans']
     },
-    {
-      id: 6,
-      title: 'Élevage de volailles locales',
-      description: 'Guide complet sur l\'élevage des races de volailles locales. Construction de poulaillers, alimentation, reproduction et santé des volailles.',
-      image: 'https://images.pexels.com/photos/1216482/pexels-photo-1216482.jpeg',
-      duration: '4 heures',
-      level: 'beginner',
-      lessons: 8,
-      category: 'livestock',
-      popular: false
-    }
+    // {
+    //   id: 4,
+    //   title: 'Marketing des produits agricoles',
+    //   description: 'Stratégies efficaces pour vendre vos produits agricoles à meilleur prix. Formation sur l\'emballage, la fixation des prix et les canaux de distribution.',
+    //   image: 'https://images.pexels.com/photos/95425/pexels-photo-95425.jpeg',
+    //   duration: '5 heures',
+    //   level: 'beginner',
+    //   lessons: 10,
+    //   category: 'business',
+    //   popular: true
+    // },
+    // {
+    //   id: 5,
+    //   title: 'Agriculture biologique certifiée',
+    //   description: 'Convertissez votre exploitation en agriculture biologique et obtenez une certification. Apprenez les normes, pratiques et avantages de l\'agriculture bio.',
+    //   image: 'https://images.pexels.com/photos/5529603/pexels-photo-5529603.jpeg',
+    //   duration: '8 heures',
+    //   level: 'advanced',
+    //   lessons: 16,
+    //   category: 'organic',
+    //   popular: false
+    // },
+    // {
+    //   id: 6,
+    //   title: 'Élevage de volailles locales',
+    //   description: 'Guide complet sur l\'élevage des races de volailles locales. Construction de poulaillers, alimentation, reproduction et santé des volailles.',
+    //   image: 'https://images.pexels.com/photos/1216482/pexels-photo-1216482.jpeg',
+    //   duration: '4 heures',
+    //   level: 'beginner',
+    //   lessons: 8,
+    //   category: 'livestock',
+    //   popular: false
+    // }
   ];
 
   const getLevelLabel = (level: string) => {
@@ -201,7 +281,7 @@ const Training = () => {
           {/* Popular courses */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">Cours populaires</h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {courses
                 .filter(course => course.popular)
                 .map(course => (
@@ -212,30 +292,61 @@ const Training = () => {
                         alt={course.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className={`absolute top-2 right-2 py-1 px-3 rounded-full text-sm font-medium ${getLevelColor(course.level)}`}>
-                        {getLevelLabel(course.level)}
-                      </div>
                     </div>
-                    
-                    <div className="p-5">
-                      <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
-                      <p className="text-gray-600 mb-4 line-clamp-2">{course.description}</p>
-                      
-                      <div className="flex justify-between text-sm text-gray-500 mb-4">
-                        <div className="flex items-center">
-                          <Clock className="h-4 w-4 mr-1" />
-                          <span>{course.duration}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Book className="h-4 w-4 mr-1" />
-                          <span>{course.lessons} leçons</span>
-                        </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getLevelColor(course.level)}`}>
+                          {getLevelLabel(course.level)}
+                        </span>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800 text-xs font-medium">
+                          {course.lessons} leçons
+                        </span>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-xs font-medium">
+                          {course.price.toLocaleString('fr-FR')} FCFA
+                        </span>
                       </div>
-                      
-                      <button className="w-full btn btn-primary flex items-center justify-center">
-                        <span>Commencer</span>
-                        <ChevronRight className="ml-1 h-5 w-5" />
-                      </button>
+                      <h3 className="text-lg font-semibold mb-2">{course.title}</h3>
+                      <p className="text-gray-600 mb-4">{course.description}</p>
+                      {course.certification && (
+                        <div className="mb-4">
+                          <h4 className="font-semibold mb-2">Certification incluse</h4>
+                          <div className="flex items-center gap-2">
+                            <Medal className="h-5 w-5 text-yellow-500" />
+                            <span className="text-sm">{course.certification.name}</span>
+                          </div>
+                          <div className="mt-2">
+                            <ul className="list-disc ml-6 space-y-1 text-sm">
+                              {course.certification.phases.map((phase, index) => (
+                                <li key={index}>{phase}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="mt-2">
+                            <span className="text-sm text-gray-600">
+                              Durée: {course.certification.duration}
+                            </span>
+                          </div>
+                          <div className="mt-2">
+                            <span className="text-sm text-gray-600">
+                              Coût: {course.certification.cost.toLocaleString('fr-FR')} FCFA
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      {course.requirements && (
+                        <div className="mb-4">
+                          <h4 className="font-semibold mb-2">Prérequis</h4>
+                          <ul className="list-disc ml-6 space-y-1 text-sm">
+                            {course.requirements.map((req, index) => (
+                              <li key={index}>{req}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600">{course.duration}</span>
+                        <button className="btn btn-primary">En savoir plus</button>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -247,42 +358,75 @@ const Training = () => {
             <h2 className="text-2xl font-bold mb-6">Tous les cours</h2>
             
             {filteredCourses.length > 0 ? (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredCourses.map(course => (
-                  <div key={course.id} className="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:translate-y-[-5px]">
-                    <div className="relative h-48">
-                      <img 
-                        src={course.image} 
-                        alt={course.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className={`absolute top-2 right-2 py-1 px-3 rounded-full text-sm font-medium ${getLevelColor(course.level)}`}>
-                        {getLevelLabel(course.level)}
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {filteredCourses
+                  .filter(course => !course.popular)
+                  .map(course => (
+                    <div key={course.id} className="bg-white rounded-xl shadow-md overflow-hidden">
+                      <div className="relative h-48">
+                        <img 
+                          src={course.image} 
+                          alt={course.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-2 mb-4">
+                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getLevelColor(course.level)}`}>
+                            {getLevelLabel(course.level)}
+                          </span>
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800 text-xs font-medium">
+                            {course.lessons} leçons
+                          </span>
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-xs font-medium">
+                            {course.price.toLocaleString('fr-FR')} FCFA
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-semibold mb-2">{course.title}</h3>
+                        <p className="text-gray-600 mb-4">{course.description}</p>
+                        {course.certification && (
+                          <div className="mb-4">
+                            <h4 className="font-semibold mb-2">Certification incluse</h4>
+                            <div className="flex items-center gap-2">
+                              <Medal className="h-5 w-5 text-yellow-500" />
+                              <span className="text-sm">{course.certification.name}</span>
+                            </div>
+                            <div className="mt-2">
+                              <ul className="list-disc ml-6 space-y-1 text-sm">
+                                {course.certification.phases.map((phase, index) => (
+                                  <li key={index}>{phase}</li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div className="mt-2">
+                              <span className="text-sm text-gray-600">
+                                Durée: {course.certification.duration}
+                              </span>
+                            </div>
+                            <div className="mt-2">
+                              <span className="text-sm text-gray-600">
+                                Coût: {course.certification.cost.toLocaleString('fr-FR')} FCFA
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        {course.requirements && (
+                          <div className="mb-4">
+                            <h4 className="font-semibold mb-2">Prérequis</h4>
+                            <ul className="list-disc ml-6 space-y-1 text-sm">
+                              {course.requirements.map((req, index) => (
+                                <li key={index}>{req}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600">{course.duration}</span>
+                          <button className="btn btn-primary">En savoir plus</button>
+                        </div>
                       </div>
                     </div>
-                    
-                    <div className="p-5">
-                      <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
-                      <p className="text-gray-600 mb-4 line-clamp-2">{course.description}</p>
-                      
-                      <div className="flex justify-between text-sm text-gray-500 mb-4">
-                        <div className="flex items-center">
-                          <Clock className="h-4 w-4 mr-1" />
-                          <span>{course.duration}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Book className="h-4 w-4 mr-1" />
-                          <span>{course.lessons} leçons</span>
-                        </div>
-                      </div>
-                      
-                      <button className="w-full btn btn-primary flex items-center justify-center">
-                        <span>Commencer</span>
-                        <ChevronRight className="ml-1 h-5 w-5" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             ) : (
               <div className="text-center py-12 bg-gray-50 rounded-lg">

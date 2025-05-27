@@ -19,10 +19,6 @@ const BenefitsSection = () => {
       description: 'Anticipez les changements climatiques et adaptez vos cultures aux conditions locales.'
     },
     {
-      title: 'Accès direct au marché',
-      description: 'Vendez directement vos produits sans intermédiaires et augmentez vos revenus.'
-    },
-    {
       title: 'Formation continue',
       description: 'Améliorez constamment vos connaissances grâce à notre plateforme de formation agricole.'
     }

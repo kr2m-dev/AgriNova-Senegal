@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Plane as Plant, AlertTriangle, ShoppingBag, BookOpen, Droplets, BugOff, Bone as Drone, BarChart3, Cloud, MessageSquare, HeartPulse } from 'lucide-react';
+import { Home, Plane as Plant, AlertTriangle, BookOpen, Droplets, HeartPulse } from 'lucide-react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -92,18 +92,6 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             <h3 className="font-medium text-sm text-gray-500 uppercase px-4 mt-6 mb-2">
               Ressources
             </h3>
-            
-            <NavLink 
-              to="/marche" 
-              className={({ isActive }) => `
-                flex items-center space-x-3 py-3 px-4 rounded-lg transition-colors
-                ${isActive ? 'bg-primary/10 text-primary' : 'hover:bg-gray-100'}
-              `}
-              onClick={onClose}
-            >
-              <ShoppingBag className="h-6 w-6" />
-              <span className="font-medium text-lg">Marché</span>
-            </NavLink>
             
             <NavLink 
               to="/formation" 

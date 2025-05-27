@@ -61,15 +61,6 @@ const Navbar = ({ mobileMenuOpen, setMobileMenuOpen }: NavbarProps) => {
             Alertes
           </NavLink>
           <NavLink 
-            to="/marche" 
-            className={({ isActive }) => 
-              `text-base font-medium transition-colors hover:text-primary
-               ${isActive ? 'text-primary' : 'text-gray-700'}`
-            }
-          >
-            Marché
-          </NavLink>
-          <NavLink 
             to="/formation" 
             className={({ isActive }) => 
               `text-base font-medium transition-colors hover:text-primary

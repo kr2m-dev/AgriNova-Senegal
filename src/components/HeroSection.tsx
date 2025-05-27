@@ -42,7 +42,7 @@ const HeroSection = () => {
         AgriNova Sénégal
         </h1>
         <p className="text-xl md:text-2xl max-w-2xl mb-8 md:mb-10 animate-fade-in-delayed">
-          L'innovation technologique au service des agriculteurs et éleveurs sénégalais. 
+          L'innovation technologique au service des agriculteurs sénégalais. 
           Diagnostiquez, anticipez, optimisez.
         </p>
         <div className="flex flex-wrap gap-4 animate-fade-in-delayed-more">
